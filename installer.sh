@@ -1,5 +1,5 @@
 #!/bin/sh
-#wget -q "--no-check-certificate" http://linuxsat5.webhop.info/ipaudio/installer.sh -O - | /bin/sh
+#wget -q "--no-check-certificate" https://github.com/emilnabil/ipaudio/raw/main/installer.sh -O - | /bin/sh
 ######### Only These two lines to edit with new version ######
 version=5.2
 description="Add spider-x to supported models"
@@ -29,7 +29,7 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "http://linuxsat5.webhop.info/ipaudio/ipaudio-$version.tar.gz"
+wget -q "https://github.com/emilnabil/ipaudio/raw/main/$version.tar.gz"
 
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
@@ -169,5 +169,6 @@ echo "#########################################################"
 sleep 2
 #init 3
 exit 0
+
 
 
