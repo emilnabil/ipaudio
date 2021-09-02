@@ -29,7 +29,7 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "https://github.com/emilnabil/ipaudio/ipaudio-$version.tar.gz"
+wget -q "https://github.com/emilnabil/ipaudio$version.tar.gz"
 
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
@@ -169,6 +169,7 @@ echo "#########################################################"
 sleep 2
 #init 3
 exit 0
+
 
 
 
