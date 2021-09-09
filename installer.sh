@@ -1,10 +1,12 @@
-#!/bin/sh
-#wget -q "--no-check-certificate" http://linuxsat5.webhop.info/ipaudio/installer.sh -O - | /bin/sh
+#!/bin/bash
+#wget -q "--no-check-certificate" https://raw.githubusercontent.com/emilnabil/ipaudio/main/installer.sh -O - | /bin/sh
 ######### Only These two lines to edit with new version ######
 version=5.3
 description="Add support for dm one/two"
-#############################################################
-
+echo ' =====================
+================================
+===================================== '
+echo "  download and install ipaudio "
 TEMPATH='/tmp'
 PLUGINPATH='/usr/lib/enigma2/python/Plugins/Extensions/IPAudio'
 
@@ -30,7 +32,7 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "http://linuxsat5.webhop.info/ipaudio/ipaudio-$version.tar.gz"
+wget -q "https://raw.githubusercontent.com/emilnabil/ipaudio/ipaudio-$version.tar.gz"
 
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
@@ -166,7 +168,6 @@ sync
 echo "#########################################################"
 echo "#          IPAudio $version INSTALLED SUCCESSFULLY           #"
 echo "#                BY ZIKO - support on                   #"
-echo "#   https://www.tunisia-sat.com/forums/threads/4171372  #"
 echo "#########################################################"
 echo "#           your Device will RESTART Now                #"
 echo "#########################################################"
@@ -176,4 +177,6 @@ else
     killall -9 enigma2
 fi
 exit 0
+
+
 
