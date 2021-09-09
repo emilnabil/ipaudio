@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Command: wget -q "--no-check-certificate"   https://raw.githubusercontent.com/emilnabil/ipaudio/main/installer.sh -O - | /bin/sh
 ######### Only These two lines to edit with new version ######
@@ -177,6 +177,7 @@ else
     killall -9 enigma2
 fi
 exit 0
+
 
 
 
