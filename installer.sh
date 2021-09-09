@@ -1,8 +1,8 @@
 #!/bin/sh
-#wget -q "--no-check-certificate" https://github.com/emilnabil/ipaudio/raw/main/installer.sh -O - | /bin/sh
+#wget -q "--no-check-certificate" http://linuxsat5.webhop.info/ipaudio/installer.sh -O - | /bin/sh
 ######### Only These two lines to edit with new version ######
-version=5.2
-description="Add spider-x to supported models"
+version=5.3
+description="Add support for dm one/two"
 #############################################################
 
 TEMPATH='/tmp'
@@ -13,6 +13,7 @@ BINDIR='/usr/bin/'
 ARMBIN='/tmp/ipaudio/bin/arm/*'
 MIPSBIN='/tmp/ipaudio/bin/mips/*'
 SH4BIN='/tmp/ipaudio/bin/sh4/*'
+AARCH64='/tmp/ipaudio/bin/aarch64/*'
 IPAUDIO='/tmp/ipaudio/usr/*'
 PLAYLIST='/tmp/ipaudio/etc/ipaudio.json'
 ASOUND='/tmp/ipaudio/etc/asound.conf'
@@ -29,7 +30,7 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "https://github.com/emilnabil/ipaudio-$version.tar.gz"
+wget -q "http://linuxsat5.webhop.info/ipaudio/ipaudio-$version.tar.gz"
 
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
@@ -130,6 +131,10 @@ elif grep -qs -i 'sh4' cat $CHECK; then
         echo "[ Your device is sh4 ]"
         cp -a $SH4BIN $BINDIR
         chmod 0775 /usr/bin/gst1.0-ipaudio
+elif grep -qs -i 'aarch64' cat $CHECK ; then
+	echo "[ Your device is aarch64 ]"
+        cp -a $AARCH64 $BINDIR
+        chmod 0775 /usr/bin/gst1.0-ipaudio
 else
         echo "###############################"
         echo "## Your stb is not supported ##"
@@ -165,13 +170,10 @@ echo "#   https://www.tunisia-sat.com/forums/threads/4171372  #"
 echo "#########################################################"
 echo "#           your Device will RESTART Now                #"
 echo "#########################################################"
-#init 4
-sleep 2
-#init 3
+if [ $OS = 'DreamOS' ]; then 
+    systemctl restart enigma2
+else
+    killall -9 enigma2
+fi
 exit 0
-
-
-
-
-
 
