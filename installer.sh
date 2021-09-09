@@ -1,5 +1,6 @@
 #!/bin/bash
-#wget -q "--no-check-certificate" https://raw.githubusercontent.com/emilnabil/ipaudio/main/installer.sh -O - | /bin/sh
+#
+# Command: wget   https://raw.githubusercontent.com/emilnabil/ipaudio/main/installer.sh -O - | /bin/sh
 ######### Only These two lines to edit with new version ######
 version=5.3
 description="Add support for dm one/two"
@@ -19,8 +20,6 @@ AARCH64='/tmp/ipaudio/bin/aarch64/*'
 IPAUDIO='/tmp/ipaudio/usr/*'
 PLAYLIST='/tmp/ipaudio/etc/ipaudio.json'
 ASOUND='/tmp/ipaudio/etc/asound.conf'
-
-
 uname -m >$CHECK
 
 # remove old version
@@ -32,7 +31,8 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "https://raw.githubusercontent.com/emilnabil/ipaudio/ipaudio-$version.tar.gz"
+wget -q "https://raw.githubusercontent.com/emilnabil/ipaudio/main/
+ipaudio-$version.tar.gz"
 
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
@@ -168,7 +168,7 @@ sync
 echo "#########################################################"
 echo "#          IPAudio $version INSTALLED SUCCESSFULLY           #"
 echo "#                BY ZIKO - support on                   #"
-echo "#########################################################"
+echo ".   welcome to ipaudio "
 echo "#           your Device will RESTART Now                #"
 echo "#########################################################"
 if [ $OS = 'DreamOS' ]; then 
@@ -177,6 +177,8 @@ else
     killall -9 enigma2
 fi
 exit 0
+
+
 
 
 
