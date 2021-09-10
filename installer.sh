@@ -31,9 +31,7 @@ rm -f /usr/bin/gst1.0-ipaudio >/dev/null 2>&1
 
 cd $TEMPATH
 set -e
-wget -q "https://raw.githubusercontent.com/emilnabil/ipaudio/main/
-ipaudio-$version.tar.gz"
-
+wget -q "https://raw.githubusercontent.com/emilnabil/ipaudio/main/ipaudio-$version.tar.gz"
 tar -xzf ipaudio-"$version".tar.gz -C /tmp
 set +e
 rm -f ipaudio-"$version".tar.gz
@@ -177,6 +175,7 @@ else
     killall -9 enigma2
 fi
 exit 0
+
 
 
 
